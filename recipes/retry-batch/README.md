@@ -1,16 +1,30 @@
 # Retry a batch without doubling the total
 
-A job writes its batch, then loses the acknowledgement. The retry must not count the same order twice. Use a stable order key and an upsert; do not append the replay as another sale.
+[Recipe home](../../README.md) · [Local setup](../../docs/local-development.md)
 
-Runtime: SQLite 3.35+ / Python 3.12+.
+The same two orders arrive twice after a timeout. Appending the second batch would double sales.
 
 ## Run it
 
+After the repository quickstart, run this command from the repository root:
+
 ```sh
-python3 -m unittest discover -s tests -v
+python scripts/run_recipe.py retry-batch
 ```
 
-The tests execute this folder's SQL in an in-memory SQLite database. Read the
-small `setup.sql` fixture and `solution.sql` together.
+You should see two orders, a total of 3000 cents and `replay_matches: true`.
 
-Expected: two orders totalling 3000 cents after both the first run and the retry. This only covers a stable key, not full CDC ordering.
+## Read the fix
+
+Open [setup.sql](setup.sql) for the fictional input and [solution.sql](solution.sql)
+for the correction. Use `order_id` as the business key. The upsert updates an existing order instead of adding another row. The runner compares the complete first and replayed result.
+
+## Use it carefully
+
+This example assumes one row per key in each batch and no out-of-order changes. It does not commit a source cursor or coordinate concurrent writers. A production load needs those decisions too.
+
+The SQL is tested in DuckDB 1.5.6 on Python 3.12. Read the
+[platform adaptation guide](../../platforms/README.md) before changing the dialect
+or running it against cloud data.
+
+Next: [Late updates and deletes](../late-updates/README.md).

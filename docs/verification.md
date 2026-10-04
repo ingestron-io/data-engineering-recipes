@@ -1,8 +1,8 @@
 # Verification — 2026-10-05
 
-Seven local Python tests pass: retry idempotence, late ordering/deletion replay,
+Ten local Python tests pass: retry idempotence, late ordering/deletion replay,
 join fanout diagnosis, quarantine reconciliation, changed release-file refusal,
-masking-probe control logic and actual notebook execution. SQL executes in SQLite;
+masking-probe control logic and actual notebook execution, CSV schema rejection, typed Parquet output and an empty accepted set. SQL executes in DuckDB 1.5.6 on Python 3.12;
 masking tests use fake connections and prove no native permission policy.
 
 Ten Spark tests pass against the exact source in this repository with Python
@@ -24,3 +24,5 @@ are not claimed. The native masking probe remains pending actual identity tests.
 SHA-256. They contain fictional data and runtime versions, not user paths/tokens.
 [Result card](../assets/retry-result.svg) is an illustration of those observed
 synthetic results, not a screenshot of a cloud product.
+
+The DuckDB update also runs all six public command-line demonstrations and the standalone CSV-to-Parquet command. [Local run record](duckdb-run-record.json) records their results and file hashes. Native platform guides were checked against current official sources, without executing cloud commands.
