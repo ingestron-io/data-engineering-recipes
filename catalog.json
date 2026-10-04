@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "resources": [
+    {
+      "id": "retry-batch",
+      "title": "Retry a batch without doubling the total",
+      "repository": "ingestron-io/data-engineering-recipes",
+      "path": "recipes/retry-batch/README.md",
+      "runtime": "SQLite 3.35+ / Python 3.12+",
+      "evidence": "local synthetic execution",
+      "testedAt": "2026-10-05"
+    },
+    {
+      "id": "late-updates",
+      "title": "Keep a late update from overwriting newer data",
+      "repository": "ingestron-io/data-engineering-recipes",
+      "path": "recipes/late-updates/README.md",
+      "runtime": "SQLite 3.35+ / Python 3.12+",
+      "evidence": "local synthetic execution",
+      "testedAt": "2026-10-05"
+    },
+    {
+      "id": "join-fanout",
+      "title": "Find the join that multiplied your sales",
+      "repository": "ingestron-io/data-engineering-recipes",
+      "path": "recipes/join-fanout/README.md",
+      "runtime": "SQLite / Python 3.12+",
+      "evidence": "local synthetic execution",
+      "testedAt": "2026-10-05"
+    },
+    {
+      "id": "quarantine",
+      "title": "Keep bad rows out and explain the failure",
+      "repository": "ingestron-io/data-engineering-recipes",
+      "path": "recipes/quarantine/README.md",
+      "runtime": "SQLite / Python 3.12+",
+      "evidence": "local synthetic execution",
+      "testedAt": "2026-10-05"
+    },
+    {
+      "id": "masking",
+      "title": "Test masking from the reader account",
+      "repository": "ingestron-io/data-engineering-recipes",
+      "path": "recipes/masking/README.md",
+      "runtime": "Databricks SQL with Unity Catalog; native execution required",
+      "evidence": "native pending; local probe unit tests only",
+      "testedAt": "2026-10-05"
+    },
+    {
+      "id": "release-check",
+      "title": "Stop a release when its evidence changed",
+      "repository": "ingestron-io/data-engineering-recipes",
+      "path": "recipes/release-check/README.md",
+      "runtime": "Python 3.12+",
+      "evidence": "local synthetic execution",
+      "testedAt": "2026-10-05"
+    }
+  ]
+}

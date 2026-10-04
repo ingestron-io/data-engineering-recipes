@@ -1,0 +1,110 @@
+[
+  {
+    "order_id": "O-1001",
+    "version": "1",
+    "operation": "U",
+    "amount": "100.00",
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1002",
+    "version": "1",
+    "operation": "U",
+    "amount": "60.00",
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1003",
+    "version": "1",
+    "operation": "U",
+    "amount": "40.00",
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1001",
+    "version": "2",
+    "operation": "U",
+    "amount": "120.00",
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1002",
+    "version": "2",
+    "operation": "D",
+    "amount": null,
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1004",
+    "version": "1",
+    "operation": "U",
+    "amount": "80.00",
+    "currency": "NZD",
+    "event_time": "2026-10-01T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1001",
+    "version": "2",
+    "operation": "U",
+    "amount": "120.00",
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1002",
+    "version": "2",
+    "operation": "D",
+    "amount": null,
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1004",
+    "version": "1",
+    "operation": "U",
+    "amount": "80.00",
+    "currency": "NZD",
+    "event_time": "2026-10-01T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1005",
+    "version": "1",
+    "operation": "U",
+    "amount": "-10.00",
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "O-1006",
+    "version": "two",
+    "operation": "U",
+    "amount": "20.00",
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  },
+  {
+    "order_id": "",
+    "version": "1",
+    "operation": "U",
+    "amount": "50.00",
+    "currency": "NZD",
+    "event_time": "2026-09-30T09:00:00Z",
+    "customer_email": "order-owner@example.test"
+  }
+]

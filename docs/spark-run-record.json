@@ -1,0 +1,100 @@
+{
+  "classification": "Actual local Apache Spark run on original synthetic data; not Databricks or Fabric execution",
+  "python": "3.12.14",
+  "spark": "4.0.1",
+  "java": "openjdk version \"17.0.20.1\" 2026-08-18 LTS",
+  "sourceSha256": {
+    "src/order_feed.py": "1447df16407688ab6e159eaf6a6531ce1bc633b47c2a4e9b7c7b6e6f53e672e0",
+    "src/run_lab.py": "4b9a0a68bbe475f7068a0869e43cb00235b2c621c0c2aa4a309aa0f4c57afc28",
+    "fixtures/orders.json": "701c5ef7c17af33dbe38a89950a0d9ae6a7ce2858bb267371b33b6bb79df55c1",
+    "fixtures/initial.json": "b246d29960aa850bbaa08e86665cc66180fa37628e179112b8cc36d8e1cf6f80",
+    "fixtures/changes.json": "8afa68e64a4c9c65a72cf0275fea291fb3b0c5818115340d4fe37ca197265f40"
+  },
+  "initialOrderCount": 3,
+  "deliveredRowsWithRetry": 9,
+  "naiveAppendTotalNZD": "600.00",
+  "correctActiveTotalNZD": "240.00",
+  "currentStateCount": 4,
+  "activeOrderCount": 3,
+  "retrySameResult": true,
+  "invalidRowCount": 3,
+  "validFeedQualityPassed": true,
+  "feedWithInvalidRowsReleaseReady": false,
+  "activeOrders": [
+    {
+      "order_id": "O-1001",
+      "version": 2,
+      "amount": "120.00",
+      "currency": "NZD",
+      "event_time": "2026-09-30 22:00:00"
+    },
+    {
+      "order_id": "O-1003",
+      "version": 1,
+      "amount": "40.00",
+      "currency": "NZD",
+      "event_time": "2026-09-30 22:00:00"
+    },
+    {
+      "order_id": "O-1004",
+      "version": 1,
+      "amount": "80.00",
+      "currency": "NZD",
+      "event_time": "2026-10-01 22:00:00"
+    }
+  ],
+  "currentState": [
+    {
+      "order_id": "O-1001",
+      "version": 2,
+      "operation": "U",
+      "amount": "120.00"
+    },
+    {
+      "order_id": "O-1002",
+      "version": 2,
+      "operation": "D",
+      "amount": null
+    },
+    {
+      "order_id": "O-1003",
+      "version": 1,
+      "operation": "U",
+      "amount": "40.00"
+    },
+    {
+      "order_id": "O-1004",
+      "version": 1,
+      "operation": "U",
+      "amount": "80.00"
+    }
+  ],
+  "rejectedRows": [
+    {
+      "order_id": "O-1005",
+      "version": "1",
+      "amount": "-10.00",
+      "reason": "invalid_amount"
+    },
+    {
+      "order_id": "O-1006",
+      "version": "two",
+      "amount": "20.00",
+      "reason": "invalid_version"
+    },
+    {
+      "order_id": "",
+      "version": "1",
+      "amount": "50.00",
+      "reason": "missing_order_id"
+    }
+  ],
+  "limits": [
+    "Retained-ledger rebuild, not Delta MERGE",
+    "No atomic persistence/checkpoint or concurrent writer qualification",
+    "Source versions must be reliable and increase per order",
+    "Delete markers must be retained",
+    "Serving projection removes email; raw access permissions are not enforced by this code",
+    "Local runtime only; native platform tests and captures remain pending"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "classification": "Actual local Spark SQL on original synthetic data",
+  "spark": "4.0.1",
+  "repeatedDeliveries": [
+    {
+      "order_id": "O-1001",
+      "version": "2",
+      "operation": "U",
+      "amount": "120.00",
+      "deliveries": 2
+    },
+    {
+      "order_id": "O-1002",
+      "version": "2",
+      "operation": "D",
+      "amount": null,
+      "deliveries": 2
+    },
+    {
+      "order_id": "O-1004",
+      "version": "1",
+      "operation": "U",
+      "amount": "80.00",
+      "deliveries": 2
+    }
+  ],
+  "currentTotals": [
+    {
+      "currency": "NZD",
+      "active_orders": 3,
+      "current_value": "240.00"
+    }
+  ],
+  "assertionsPassed": true,
+  "sourceSha256": {
+    "src/run_sql.py": "13c7d5daba97344994773397f1597cd3fc67f3904b1f760ba24441cc1f7d452d",
+    "src/retry_diagnostic.sql": "d7e4c4244c5cabd0a5804330d30ea2c3d6794c5c14daa76ab7de8bbf41a39fe9",
+    "src/active_total.sql": "a038412f51af4542a183b4b211027421e6c2f82cb51808bad26110c817378097",
+    "src/order_feed.py": "1447df16407688ab6e159eaf6a6531ce1bc633b47c2a4e9b7c7b6e6f53e672e0",
+    "fixtures/initial.json": "b246d29960aa850bbaa08e86665cc66180fa37628e179112b8cc36d8e1cf6f80",
+    "fixtures/changes.json": "8afa68e64a4c9c65a72cf0275fea291fb3b0c5818115340d4fe37ca197265f40"
+  }
+}
