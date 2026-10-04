@@ -1,0 +1,7 @@
+order_id,amount_cents,currency
+O1,1000,NZD
+O2,2000,NZD
+O3,not-a-number,NZD
+O4,-10,NZD
+O5,500,USD
+,800,NZD

@@ -1,16 +1,30 @@
 # Find the join that multiplied your sales
 
-Two valid customer records share the same customer ID. Joining sales to both quietly doubles the total. Check the dimension key first; choose a documented record before joining.
+[Recipe home](../../README.md) · [Local setup](../../docs/local-development.md)
 
-Runtime: SQLite / Python 3.12+.
+Two orders belong to C1. The customer table has two revisions for C1. Joining both revisions to both orders doubles the total.
 
 ## Run it
 
+After the repository quickstart, run this command from the repository root:
+
 ```sh
-python3 -m unittest discover -s tests -v
+python scripts/run_recipe.py join-fanout
 ```
 
-The tests execute this folder's SQL in an in-memory SQLite database. Read the
-small `setup.sql` fixture and `solution.sql` together.
+You should see `naive_total_cents: 6000`, `reviewed_total_cents: 3000` and duplicate key C1 with count 2.
 
-Expected: the unchecked join totals 6000 cents; the reviewed latest-record join totals 3000 cents. Reject tied ordering keys rather than picking an arbitrary record.
+## Read the fix
+
+Open [setup.sql](setup.sql) for the fictional input and [solution.sql](solution.sql)
+for the correction. Count rows per customer key before joining. The reviewed query chooses the latest customer revision with ROW_NUMBER, then calculates the total.
+
+## Use it carefully
+
+Selecting the latest revision is this example’s business rule. Historical reporting may need the revision valid on the order date. A tied revision also needs a deterministic rule.
+
+The SQL is tested in DuckDB 1.5.6 on Python 3.12. Read the
+[platform adaptation guide](../../platforms/README.md) before changing the dialect
+or running it against cloud data.
+
+Next: [Account for rejected rows](../quarantine/README.md).

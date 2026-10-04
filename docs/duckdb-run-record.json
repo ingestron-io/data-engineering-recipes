@@ -1,0 +1,97 @@
+{
+  "testedAt": "2026-10-05",
+  "evidence": "local synthetic execution; no cloud action",
+  "runtime": {
+    "python": "3.12.14",
+    "duckdb": "1.5.6"
+  },
+  "tests": 10,
+  "commands": [
+    "python scripts/run_recipe.py all",
+    "python recipes/file-quality/check_files.py --output outputs/accepted.parquet"
+  ],
+  "results": {
+    "retry-batch": {
+      "rows": 2,
+      "total_cents": 3000,
+      "replay_matches": true
+    },
+    "late-updates": {
+      "stored_version": 4,
+      "stored_operation": "D",
+      "active_rows": 0
+    },
+    "join-fanout": {
+      "naive_total_cents": 6000,
+      "reviewed_total_cents": 3000,
+      "duplicate_customer_keys": [
+        [
+          "C1",
+          2
+        ]
+      ]
+    },
+    "quarantine": {
+      "incoming": 4,
+      "accepted": 1,
+      "rejected": 3,
+      "reasons": [
+        [
+          "invalid_amount",
+          1
+        ],
+        [
+          "missing_order_id",
+          1
+        ],
+        [
+          "unsupported_currency",
+          1
+        ]
+      ]
+    },
+    "file-quality": {
+      "incoming": 6,
+      "accepted": 2,
+      "rejected": 4,
+      "accepted_total_cents": 3000,
+      "reasons": [
+        [
+          "invalid_amount",
+          2
+        ],
+        [
+          "missing_order_id",
+          1
+        ],
+        [
+          "unsupported_currency",
+          1
+        ]
+      ]
+    },
+    "release-check": {
+      "unchanged_release": "passed",
+      "changed_release": "Files changed since review; run checks and approve again"
+    }
+  },
+  "sha256": {
+    "recipes/file-quality/check_files.py": "6f386ff43774459308f991778e287b1262ac28e8ba98b9e99ff981e6704aeb60",
+    "recipes/file-quality/orders.csv": "042fc56c1e92b0f9ac3703d5ce4b8e0e5024fdd96f33d652039b90312233cdcd",
+    "recipes/join-fanout/setup.sql": "9858eaf563187a56b80c29f537b9d7f96e60aa31c60f259c6587b20923057fc4",
+    "recipes/join-fanout/solution.sql": "dc00a723d4af74be31cab967a0ee1280eb28089692227fb09fe5c2a83cb382e0",
+    "recipes/late-updates/demo.ipynb": "73bf6591f81870710496da1771e69b6c67deea6aac68b694c3368531cc841d1f",
+    "recipes/late-updates/setup.sql": "94677064c9a937f0f11070cbb9057078803412324a20c80b4cb37bbd039ff7af",
+    "recipes/late-updates/solution.sql": "8c28d957074fb6e57c449f0f1a0143be20910d6299b8135d3608dca9c80f6d41",
+    "recipes/masking/probe.py": "218b003d9935c0f4501b7a734feca15f9c266f762f369602726121bbce049398",
+    "recipes/quarantine/setup.sql": "2e5b4b5b6034340145c27bfa5981aef764143a0d0dcd0b0345b714e583fa33b0",
+    "recipes/quarantine/solution.sql": "24ab72cca29e6333e9a260ee1a0ae30db8ade62b4e17cc6a540702382a659988",
+    "recipes/release-check/evidence.py": "355c8fcc3cfd4f05334ec3a2a9308828cbb151e67c269f142af9a70d1e52e1c0",
+    "recipes/retry-batch/setup.sql": "5fc655801ba210ea55eeccc387ba36bb855ee493c1e2765a19612164265bbfb5",
+    "recipes/retry-batch/solution.sql": "d8c0e64007767fef188d0434c57f9125ecf2128ae3c8f6e4591ebd39796964c2",
+    "requirements.txt": "afa5bd1cbd0d0be1318c3e8992b31f1deae587e80425877fc7dee2fee0d1572f",
+    "scripts/run_recipe.py": "e8ce2927faee0bed1ed6d2c50ca5a3d49f80e6b9eb4dc56ded9f903d150fbb0d",
+    "tests/test_files.py": "5978fd0297e8ebfc6c36a5b4a8781a31c80941756a2b5332bc97bd7b18d44f8e",
+    "tests/test_recipes.py": "df3b48b3cab68b8d4290fb951b1119c216bb39a466c3aa9c31923cc345e1dd29"
+  }
+}

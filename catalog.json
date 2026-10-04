@@ -6,7 +6,7 @@
       "title": "Retry a batch without doubling the total",
       "repository": "ingestron-io/data-engineering-recipes",
       "path": "recipes/retry-batch/README.md",
-      "runtime": "SQLite 3.35+ / Python 3.12+",
+      "runtime": "DuckDB 1.5.6 / Python 3.12",
       "evidence": "local synthetic execution",
       "testedAt": "2026-10-05"
     },
@@ -15,7 +15,7 @@
       "title": "Keep a late update from overwriting newer data",
       "repository": "ingestron-io/data-engineering-recipes",
       "path": "recipes/late-updates/README.md",
-      "runtime": "SQLite 3.35+ / Python 3.12+",
+      "runtime": "DuckDB 1.5.6 / Python 3.12",
       "evidence": "local synthetic execution",
       "testedAt": "2026-10-05"
     },
@@ -24,7 +24,7 @@
       "title": "Find the join that multiplied your sales",
       "repository": "ingestron-io/data-engineering-recipes",
       "path": "recipes/join-fanout/README.md",
-      "runtime": "SQLite / Python 3.12+",
+      "runtime": "DuckDB 1.5.6 / Python 3.12",
       "evidence": "local synthetic execution",
       "testedAt": "2026-10-05"
     },
@@ -33,8 +33,17 @@
       "title": "Keep bad rows out and explain the failure",
       "repository": "ingestron-io/data-engineering-recipes",
       "path": "recipes/quarantine/README.md",
-      "runtime": "SQLite / Python 3.12+",
+      "runtime": "DuckDB 1.5.6 / Python 3.12",
       "evidence": "local synthetic execution",
+      "testedAt": "2026-10-05"
+    },
+    {
+      "id": "file-quality",
+      "title": "Check a CSV before writing Parquet",
+      "repository": "ingestron-io/data-engineering-recipes",
+      "path": "recipes/file-quality/README.md",
+      "runtime": "DuckDB 1.5.6 / Python 3.12",
+      "evidence": "local synthetic CSV and Parquet execution",
       "testedAt": "2026-10-05"
     },
     {

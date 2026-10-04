@@ -1,13 +1,17 @@
-# Find the native equivalent
+# Take a local recipe to your platform
 
-The runnable SQL examples use SQLite. Adapt semantics deliberately rather than
-copying a dialect into a different engine.
+[Recipe home](../README.md)
 
-| Platform | Start here | Check before release |
-| --- | --- | --- |
-| ADF | [CI/CD](https://learn.microsoft.com/en-us/azure/data-factory/continuous-integration-delivery) | Parameterisation, trigger handling, private source reachability and retry boundaries |
-| Databricks | [MERGE](https://docs.databricks.com/aws/en/delta/merge) | Duplicate source matches, version ordering, runtime-specific behaviour and tombstones |
-| Microsoft Fabric | [Deployment pipelines](https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/intro-to-deployment-pipelines) | Item support, connection/configuration changes and reader permissions |
-| Spark | [SQL guide](https://spark.apache.org/docs/latest/sql-programming-guide.html) | Types, nulls, joins, partitions and checkpoint/state semantics |
+DuckDB exercises the data rule with small inputs. Before using it in a native
+pipeline, check the SQL dialect, source semantics, storage and permissions.
 
-Native execution and screenshots are not yet qualified in this repository.
+| Platform           | Start with                                  | Verify in the native environment                              |
+| ------------------ | ------------------------------------------- | ------------------------------------------------------------- |
+| Databricks         | [MERGE and quality checks](databricks.md)   | Duplicate matching, Delta state, job target and reader roles  |
+| Microsoft Fabric   | [Notebook and lakehouse release](fabric.md) | Runtime, table paths, target bindings and data permissions    |
+| Azure Data Factory | [Incremental copy and recovery](adf.md)     | Connectivity, cursor range, sink retry and release parameters |
+
+These pages are adaptation and review guides. The repository’s execution evidence
+covers local DuckDB/Python and its existing local Spark exercise. No native-cloud
+run, screenshot or deployment is claimed. Cloud runs need an authorised account
+and may consume capacity or compute.

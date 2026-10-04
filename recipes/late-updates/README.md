@@ -1,16 +1,30 @@
-# Keep a late update from overwriting newer data
+# Keep an old update from replacing newer data
 
-Arrival time is not source order. A version-2 update can arrive after version 3. Compare source versions and retain deletion markers, so replay cannot bring a deleted order back.
+[Recipe home](../../README.md) · [Local setup](../../docs/local-development.md)
 
-Runtime: SQLite 3.35+ / Python 3.12+.
+Order O1 is already at version 3. A delayed version 2 arrives, then version 4 deletes the order. Replaying version 3 must not bring it back.
 
 ## Run it
 
+After the repository quickstart, run this command from the repository root:
+
 ```sh
-python3 -m unittest discover -s tests -v
+python scripts/run_recipe.py late-updates
 ```
 
-The tests execute this folder's SQL in an in-memory SQLite database. Read the
-small `setup.sql` fixture and `solution.sql` together.
+You should see `stored_version: 4`, `stored_operation: "D"` and `active_rows: 0`.
 
-Expected: version 3 and 2500 cents survive a late version-2 update. A version-4 delete remains deleted after replaying version 3. Equal-version conflicting payloads require quarantine upstream; this upsert does not detect them.
+## Read the fix
+
+Open [setup.sql](setup.sql) for the fictional input and [solution.sql](solution.sql)
+for the correction. The source version decides which change wins. The update only applies a higher version. A deletion marker stays in state, while the serving query selects rows whose operation is U.
+
+## Use it carefully
+
+The source version must be reliable. This SQL assumes one change per key in a batch; equal-version conflicts need a defined rejection policy. The larger Spark example exercises that policy.
+
+The SQL is tested in DuckDB 1.5.6 on Python 3.12. Read the
+[platform adaptation guide](../../platforms/README.md) before changing the dialect
+or running it against cloud data.
+
+Next: [Diagnose a join that multiplies rows](../join-fanout/README.md).

@@ -1,16 +1,30 @@
 # Keep bad rows out and explain the failure
 
-Dropping invalid rows hides a source problem. Store a clear failed rule with each rejected row, and reconcile accepted plus rejected counts against the input.
+[Recipe home](../../README.md) · [Local setup](../../docs/local-development.md)
 
-Runtime: SQLite / Python 3.12+.
+A file contains a missing order ID, a negative amount and a currency the model does not support. Silently dropping them hides the problem.
 
 ## Run it
 
+After the repository quickstart, run this command from the repository root:
+
 ```sh
-python3 -m unittest discover -s tests -v
+python scripts/run_recipe.py quarantine
 ```
 
-The tests execute this folder's SQL in an in-memory SQLite database. Read the
-small `setup.sql` fixture and `solution.sql` together.
+You should see four incoming rows, one accepted row and three rejected rows with named reasons.
 
-Expected: one accepted and three rejected rows; every rejected row has a rule name. This teaching rule set is deliberately small.
+## Read the fix
+
+Open [setup.sql](setup.sql) for the fictional input and [solution.sql](solution.sql)
+for the correction. Classify each row once, then expose accepted and rejected views. Check that both counts add up to the input count.
+
+## Use it carefully
+
+Only the first failed rule is recorded here. This is a bounded teaching example, not durable quarantine storage. Define retention, ownership and a correction/replay process in a real pipeline.
+
+The SQL is tested in DuckDB 1.5.6 on Python 3.12. Read the
+[platform adaptation guide](../../platforms/README.md) before changing the dialect
+or running it against cloud data.
+
+Next: [Check a CSV and its Parquet output](../file-quality/README.md).
